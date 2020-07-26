@@ -1,0 +1,12 @@
+flask
+gunicorn
+flask_restful
+pandas
+matplotlib
+numpy
+seaborn
+surprise
+gevent
+werkzeug
+prometheus_client
+requests

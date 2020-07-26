@@ -1,0 +1,109 @@
+<style>
+
+
+    #formsection {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -250px;
+        width: 500px;
+        height: 200px;
+        border: 4px dashed #fff;
+    }
+
+    #formsection p {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 170px;
+        color: #ffffff;
+        font-family: Arial;
+    }
+
+    #formsection input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+    }
+
+    #formsection button {
+        margin: 0;
+        color: #fff;
+        background: rgba(186, 96, 125, 0.38);;
+        border: none;
+        width: 508px;
+        height: 35px;
+        margin-top: -8px;
+        margin-left: -8px;
+        border-radius: 4px;
+        border-bottom: 4px solid rgba(186, 96, 125, 0.38);;
+        transition: all .2s ease;
+        outline: none;
+    }
+
+    #formsection button:hover {
+        background: rgba(186, 96, 125, 0.38);;
+        color: maroon;
+    }
+
+    #formsection button:active {
+        border: 0;
+    }
+
+    .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 5%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
+    > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    }
+
+</style>
+{% include "header.html" %}
+
+<!-- Header -->
+<header class="masthead" style="background-image:  url({{ url_for ('static', filename = 'bg1.png') }});">
+    <div class="container">
+        <div class="center">
+            <section>
+                <h3>
+                    I am a woman who is passsionate about technology. This is a small web app built to classify malign or benign pathology images. This is not for real usage. This is just a prototype, showing how we can initiate and use technology to identify medical issues! Thanks for stopping by! :)
+                </h3>
+                <h4>-- Hanvitha Gavini</h4>
+
+            </section>
+        </div>
+
+        <section>
+            <div>
+
+            </div>
+        </section>
+        <section>
+            <div>
+
+            </div>
+        </section>
+    </div>
+    </div>
+</header>
+</div>
+
+
+</html>

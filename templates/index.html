@@ -1,0 +1,150 @@
+<style>
+
+
+    #formsection {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -250px;
+        width: 500px;
+        height: 200px;
+        border: 4px dashed #fff;
+    }
+
+    #formsection p {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 170px;
+        color: #ffffff;
+        font-family: Arial;
+    }
+
+    #formsection input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+    }
+
+    #formsection button {
+        margin: 0;
+        color: #fff;
+        background: rgba(186, 96, 125, 0.38);;
+        border: none;
+        width: 508px;
+        height: 35px;
+
+        margin-left: -8px;
+        border-radius: 4px;
+        border-bottom: 4px solid rgba(186, 96, 125, 0.38);;
+        transition: all .2s ease;
+        outline: none;
+    }
+
+    #formsection button:hover {
+        background: rgba(186, 96, 125, 0.38);;
+        color: maroon;
+    }
+
+    #formsection button:active {
+        border: 0;
+    }
+    #imgsection{
+        display: inline;
+        margin: 0 auto .5rem auto;
+        max-width: 180px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid white;
+    }
+
+</style>
+{% include "header.html" %}
+
+<!-- Header -->
+<header class="masthead" style="background-image:  url({{ url_for ('static', filename = 'bg1.png') }});">
+    <div class="container">
+        <div class="center">
+            <section>
+                <h3>
+                    Breast cancer is the most common cancer in American women, except for skin cancers. Death rates
+                    declined 40% from 1989 to 2016 among women. The progress is attributed to improvements in early
+                    detection.</h3>
+                <h4>--American Cancer Society</h4>
+                <div id="formsection">
+                    <input type="file" id="uploadfile" accept="image/jpg,image/png" style="left: 10px;">
+                    <img id="imgsection" style="display: none" />
+                    <p id="dragmsg">Drag your pathology image here or click in this area.</p>
+                    <button id="submitbutton" name="submitbutton">Get Prediction</button>
+                    <h4 id="result"></h4>
+                </div>
+
+
+            </section>
+        </div>
+
+        <section>
+            <div>
+
+            </div>
+        </section>
+        <section>
+            <div>
+
+            </div>
+        </section>
+    </div>
+    </div>
+</header>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgsection').attr('src', e.target.result);
+                    $('#imgsection').css("display", "block");
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+
+        $('#uploadfile').change(function () {
+            $('#dragmsg').css("display", "none");
+            readURL(this);
+        });
+        $('#submitbutton').click(function () {
+            $('#result').text("Transforming the image and fetching predictions.....");
+            var form_data = new FormData();
+            form_data.append('file', $('#uploadfile').prop('files')[0]);
+            $.ajax({
+                url: "{{ url_for('predict') }}",
+                type: "POST",
+                dataType: 'text',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (resp) {
+                    $('#result').text("");
+                    $('#result').append(resp);
+                },
+            });
+        });
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+{% include "header.html" %}
+
+<div class="wrapper">
+<!-- Main Message -->
+<header class="masthead" style="background-image:  url({{ url_for ('static', filename = 'bg1.png') }});">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">{{ message }}</div>
+        </div>
+    </div>
+</header>
+
+<!-- Related to items you've viewed -->
+{% if similarMovies %}
+<section class="bg-light page-section" id="portfolio">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Related to items you've viewed</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for item in similarMovies %}
+                <div class="col-md-2 col-sm-3 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="{{ url_for('movie', id=item[0]) }}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-play-circle-o movie-button" title="Watch Now"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src={{ url_for('static', filename=item[0]|string+'.jpg') }} alt="{{ item[1] }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <p class="text-camelcase">{{ item[1] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- Trending now Grid -->
+
+<section class="bg-light page-section" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Trending Now!</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for item in trending %}
+                <div class="col-md-2 col-sm-3 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="{{ url_for('movie', id=item[0]) }}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-play-circle-o movie-button" title="Watch Now"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src={{ url_for('static', filename=item[0]|string+'.jpg') }} alt="{{ item[1] }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <p class="text-camelcase">{{ item[1] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+</div>
+
+{% include "footer.html" %}
