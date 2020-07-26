@@ -16,8 +16,10 @@ app.secret_key = b'_Blah"gd5HK\n\xec]/'
 app.logger.setLevel(logging.DEBUG)
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
-APP_ROOT = os.getenv('APP_ROOT')
-# APP_ROOT = os.getcwd()
+# APP_ROOT points to /opt/app-root
+# APP_ROOT = os.getenv('APP_ROOT')
+# we need /opt/app-root/src -->current directory
+APP_ROOT = os.getcwd()
 test_dir = os.path.join(APP_ROOT, 'testimages')
 DEFAULT_HOST = "bcd:8080"
 # DEFAULT_HOST = "bcd-demo.apps.cluster-plano-6aa8.plano-6aa8.example.opentlc.com"
