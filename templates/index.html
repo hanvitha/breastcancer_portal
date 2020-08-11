@@ -1,6 +1,5 @@
 <style>
 
-
     #formsection {
         position: absolute;
         top: 50%;
@@ -54,7 +53,8 @@
     #formsection button:active {
         border: 0;
     }
-    #imgsection{
+
+    #imgsection {
         display: inline;
         margin: 0 auto .5rem auto;
         max-width: 180px;
@@ -78,10 +78,14 @@
                 <h4>--American Cancer Society</h4>
                 <div id="formsection">
                     <input type="file" id="uploadfile" accept="image/jpg,image/png" style="left: 10px;">
-                    <img id="imgsection" style="display: none" />
+                    <img id="imgsection" style="display: none"/>
                     <p id="dragmsg">Drag your pathology image here or click in this area.</p>
                     <button id="submitbutton" name="submitbutton">Get Prediction</button>
+
                     <h4 id="result"></h4>
+                    <div id='loadingresponse' style='display:none'>
+                        <img src={{ url_for('static', filename='ajax-loader.gif') }}/>
+                    </div>
                 </div>
 
 
@@ -126,6 +130,7 @@
             readURL(this);
         });
         $('#submitbutton').click(function () {
+            $('#loadingresponse').show()
             $('#result').text("Transforming the image and fetching predictions.....");
             var form_data = new FormData();
             form_data.append('file', $('#uploadfile').prop('files')[0]);
@@ -138,6 +143,7 @@
                 cache: false,
                 processData: false,
                 success: function (resp) {
+                    $('#loadingresponse').hide();
                     $('#result').text("");
                     $('#result').append(resp);
                 },
