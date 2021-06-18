@@ -21,7 +21,7 @@ oc new-app --name bcd quay.io/hanvithag/model-pipeline-s2i:master~https://github
 ```
 ### Or Using a pipeline
 ```bash
-oc apply -f https://raw.githubusercontent.com/hanvitha/breastcancer_pipelines/master/task/build-source.yaml
+oc apply -f https://raw.githubusercontent.com/hanvitha/breastcancer_pipelines/master/task/s2i-model.yaml
 oc apply -f https://raw.githubusercontent.com/hanvitha/breastcancer_pipelines/master/resources/build-image.yaml
 oc apply -f https://raw.githubusercontent.com/hanvitha/breastcancer_pipelines/master/resources/s2i-model.yaml
 oc apply -f https://raw.githubusercontent.com/hanvitha/breastcancer_pipelines/master/pipeline/deploy-pipelines.yaml
