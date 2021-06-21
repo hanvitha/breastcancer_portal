@@ -20,9 +20,10 @@ app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 # APP_ROOT = os.getenv('APP_ROOT')
 # we need /opt/app-root/src -->current directory
 APP_ROOT = os.getcwd()
-test_dir = os.path.join(APP_ROOT, 'test_images')
+test_dir = os.path.join(APP_ROOT, 'testimages')
 namespace= "ai-ml-demo"
 modelname= "bcd"
+# http://bcd.ai-ml-demo.svc.cluster.local/  
 DEFAULT_HOST = ""+ modelname + "." + namespace +".svc.cluster.local"
 # DEFAULT_HOST = "bcd-demo.apps.cluster-plano-6aa8.plano-6aa8.example.opentlc.com"
 DEFAULT_BASE_URL = ("http://%s/" % DEFAULT_HOST) + r"%s"
