@@ -77,3 +77,4 @@ Add prometheus dashboard in grafana using:
 http://prometheus.ai-ml-demo:9090
 ```
 Add sum(pipeline_predictions_total) by (app, value) to monitoring metrics and create your own dashboard
+Sample board to use : https://raw.githubusercontent.com/hanvitha/breastcancer_detection/master/Breast%20Cancer%20Model%20Metrics-grafana_dashboard.json
