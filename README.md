@@ -10,10 +10,11 @@ Parts of this demo:
 ![End-to-End Flow](screenshot.png)
 
 
-Pre-requisites:
+Pre-requisites: Internal RedHatters--> Skip this and provision "OpenShift 4 AI ML Workflows Demo"" on rhpds 
 * Install Red Hat Openshift Serverless Operator
 * Create a serviceaccount named "pipeline" to run the pipelines
 * Optional-In order to showcase jupyter hub notebook, install OpenDataHub operator from OperatorHub
+
 
 
 Create a project "ai-ml-demo" in Openshift. We will be using this throughout the demo.
@@ -52,6 +53,9 @@ oc new-app -n ai-ml-demo https://github.com/hanvitha/breastcancer_portal.git
 oc expose service/breastcancerportal
 ```
 
+UI should look like this::
+![BreastCancerUI](ui.png)
+
 ## Adding Monitoring and Metrics
 ### Connecting Prometheus  
 ```bash
@@ -76,5 +80,6 @@ Add prometheus dashboard in grafana using:
 ```bash
 http://prometheus.ai-ml-demo:9090
 ```
-Add sum(pipeline_predictions_total) by (app, value) to monitoring metrics and create your own dashboard
+Add sum(pipeline_predictions_total) by (app, value) to monitoring metrics and create your own dashboard.
+
 Sample board to use : https://raw.githubusercontent.com/hanvitha/breastcancer_detection/master/Breast%20Cancer%20Model%20Metrics-grafana_dashboard.json
