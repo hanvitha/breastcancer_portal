@@ -56,6 +56,10 @@ oc expose service/breastcancerportal
 UI should look like this::
 ![BreastCancerUI](ui.png)
 
+
+## Optional - Attach storage
+You can connect your RedHat container storage to the frontend app here so that the images uploaded to test will be saved.
+
 ## Adding Monitoring and Metrics
 ### Connecting Prometheus  
 ```bash
