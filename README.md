@@ -87,3 +87,16 @@ http://prometheus.ai-ml-demo:9090
 Add sum(pipeline_predictions_total) by (app, value) to monitoring metrics and create your own dashboard.
 
 Sample board to use : https://raw.githubusercontent.com/hanvitha/breastcancer_detection/master/Breast%20Cancer%20Model%20Metrics-grafana_dashboard.json
+
+
+# Working it all together
+* In order to test the app is all up and running, download images from [testimages](testimages/) folder and download the images(you can clone the repo if needed)
+* Our model is around 70% accurate so it can detect malignancy most of the times but not always.
+* From UI, upload/drop the test image. and click on Get Prediction. 
+* You will see the prediction below the button. It can take a couple of seconds as it needs to process the image. 
+* Image names with postfix _0 are benign -absent of cancer cells, and _1 are malign for your reference. You can change names if you like.
+* You can see how your model is working from grafana dashboard.
+
+
+Thanks for going through my demo.This is purely my personal demo created to show Opensource value to my customers.
+Please reach out to me on my [LinkedIn](linkedin.com/in/hanvitha/)
