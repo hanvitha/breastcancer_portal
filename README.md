@@ -21,7 +21,7 @@ oc new-project ai-ml-demo
 Pre-requisites:
 * Install Red Hat Openshift Serverless Operator
 * Create a serviceaccount named "pipeline" to run the pipelines
-* Optional-In order to showcase full demo and you do not have external jupyter hub access,please install OpenDataHub operator from OperatorHub and create instance with jupyterhub components. Sample steps below.
+* In order to showcase full demo and you do not have external jupyter hub access,please install OpenDataHub operator from OperatorHub and create instance with jupyterhub components. Sample steps below.
 * Click create instance-> go to yaml view and paste the below code and click create.
 ```bash
 apiVersion: kfdef.apps.kubeflow.org/v1
@@ -57,6 +57,21 @@ spec:
     - name: manifests
       uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.1.0'
 ```
+
+## Model development
+* Click ODH Dashboard-this is the opensource version of RHODS. As we added only jupyter hub components, we will have that enabled here. 
+* On jupyeter hub card, Click on launch. You will be directed to the hub, which is Datascience IDE. 
+* Select tensorflow notebook and keep everything else as it is and Click start.
+* Your jupyter hub environment will be ready.
+* On the top right, click New->Terminal. You will be directed to command line prompt. 
+* Here, lets clone our notebooks.
+```bash
+git clone https://github.com/hanvitha/breastcancer_detection.git
+```
+* You have the notebook repo locally now to work on. 
+* Notebook to see how the model is developed, go to-> *image_processing_model.ipynb. This will take long time to run incase you decide to run this. 
+* To test that our model is deployed right, you can run *test_services.ipynb. This can be done successfully once our pipeline run is done. 
+
 
 ## Model Deployment in Openshift
 
