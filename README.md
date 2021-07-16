@@ -32,6 +32,11 @@ metadata:
 spec:
   applications:
     - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odh-common
+      name: odh-common
+    - kustomizeConfig:
         parameters:
           - name: s3_endpoint_url
             value: s3.odh.com
@@ -60,16 +65,16 @@ spec:
 
 ## Model development
 * Click ODH Dashboard-this is the opensource version of RHODS. As we added only jupyter hub components, we will have that enabled here. 
-* On jupyeter hub card, Click on launch. You will be directed to the hub, which is Datascience IDE. 
-* Select tensorflow notebook and keep everything else as it is and Click start.
+* On Jupyeter hub card, Click on Launch. You will be directed to the hub, which is Datascience IDE. 
+* Select Tensorflow notebook and keep everything else as it is and Click start server.
 * Your jupyter hub environment will be ready.
 * On the top right, click New->Terminal. You will be directed to command line prompt. 
 * Here, lets clone our notebooks.
 ```bash
 git clone https://github.com/hanvitha/breastcancer_detection.git
 ```
-* You have the notebook repo locally now to work on. 
-* Notebook to see how the model is developed, go to-> *image_processing_model.ipynb. This will take long time to run incase you decide to run this. 
+* Now go back to the hub, you have the notebooks repo locally now to work on. 
+* To see how the model is developed, go to *image_processing_model.ipynb. This will take long time to run incase you decide to run this. 
 * To test that our model is deployed right, you can run *test_services.ipynb. This can be done successfully once our pipeline run is done. 
 
 
