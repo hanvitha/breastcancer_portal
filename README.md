@@ -10,16 +10,54 @@ Parts of this demo:
 ![End-to-End Flow](screenshot.png)
 
 
-Pre-requisites:
-* Install Red Hat Openshift Serverless Operator
-* Create a serviceaccount named "pipeline" to run the pipelines
-* Optional-In order to showcase jupyter hub notebook, install OpenDataHub operator from OperatorHub
 
+# Steps 
 
 Create a project "ai-ml-demo" in Openshift. We will be using this throughout the demo.
 ```bash
 oc new-project ai-ml-demo
 ```
+
+Pre-requisites:
+* Install Red Hat Openshift Serverless Operator
+* Create a serviceaccount named "pipeline" to run the pipelines
+* Optional-In order to showcase full demo and you do not have external jupyter hub access,please install OpenDataHub operator from OperatorHub and create instance with jupyterhub components. Sample steps below.
+* Click create instance-> go to yaml view and paste the below code and click create.
+```bash
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: opendatahub
+  namespace: ai-ml-demo
+spec:
+  applications:
+    - kustomizeConfig:
+        parameters:
+          - name: s3_endpoint_url
+            value: s3.odh.com
+        repoRef:
+          name: manifests
+          path: jupyterhub/jupyterhub
+      name: jupyterhub
+    - kustomizeConfig:
+        overlays:
+          - additional
+        repoRef:
+          name: manifests
+          path: jupyterhub/notebook-images
+      name: notebook-images
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odh-dashboard
+      name: odh-dashboard
+  repos:
+    - name: kf-manifests
+      uri: 'https://github.com/kubeflow/manifests/tarball/v1.3-branch'
+    - name: manifests
+      uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.1.0'
+```
+
 ## Model Deployment in Openshift
 
 ### Deploying using a pipeline
